@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mainlayout"
+    android:background="#000000" >
+
+    <TextView
+        android:id="@+id/hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/hello_world"
+        android:textColor="#DDDDDD"
+        tools:context=".MainActivity" />
+    
+    <TextView
+        android:id="@+id/throwscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="#DDDDDD"
+        android:text="placeholder"
+        tools:context=".MainActivity"
+        android:layout_below="@+id/hello" />
+    <TextView
+        android:id="@+id/gamescore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="#DDDDDD"
+        android:text="placeholder"
+        tools:context=".MainActivity"
+        android:layout_below="@+id/throwscore" />
+    <TextView
+        android:id="@+id/throwhiscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="#DDDDDD"
+        android:text="placeholder"
+        tools:context=".MainActivity"
+        android:layout_below="@+id/gamescore" />
+    <TextView
+        android:id="@+id/gamehiscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="#DDDDDD"
+        android:text="placeholder"
+        tools:context=".MainActivity"
+        android:layout_below="@+id/throwhiscore" />
+    
+    <Button android:id="@+id/calibrate" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" 
+			 android:text="Reset" 
+			 android:layout_gravity="bottom" 
+			 android:layout_below="@+id/gamehiscore" />
+</RelativeLayout>

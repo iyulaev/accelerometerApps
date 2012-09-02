@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/mainlayout" android:orientation="vertical"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+    
+	<RelativeLayout
+		android:id="@+id/mapbox"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="0.9"
+		android:orientation="vertical">
+
+		<com.yulaev.macrogesturemapviewer.MyView android:id="@+id/mapview"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:clickable="true" android:apiKey="@string/maps_apik" /> 
+			
+		<LinearLayout
+			android:id="@+id/zoombox"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_alignParentTop="true"
+			android:background="#0000"
+			android:layout_above="@id/mapview"/>
+
+	</RelativeLayout>
+	
+	 <LinearLayout android:id="@+id/choosebuttons"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:orientation="horizontal">
+		<Button android:id="@+id/calibrate" android:layout_width="0pt"
+			android:layout_height="fill_parent" android:layout_weight="1"
+			 android:text="Calibrate Accelerometer"
+			 android:visibility="gone" />
+		<!-- <Button android:id="@+id/go_routes" android:layout_width="0pt"
+			android:layout_height="wrap_content" android:layout_weight="1"
+			 android:text="Routes" />
+		<Button android:id="@+id/go_stops" android:layout_width="0pt"
+			android:layout_height="wrap_content" android:layout_weight="1"
+			 android:text="Stops" /> -->
+	</LinearLayout>
+
+</LinearLayout>

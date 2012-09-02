@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">MacroGestureMapViewer</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    
+    <string name="maps_apik">0O7uJsBn99wGNmFPh8ad7bAbG--41TZlm-EDPhA</string>
+
+</resources>
