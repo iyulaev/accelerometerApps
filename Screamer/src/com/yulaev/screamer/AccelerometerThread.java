@@ -1,3 +1,8 @@
+/** This Thread deals with receiving updates from the system accelerometer, interprets and processes
+ * the updates and send messages describing what is going on! It does some simple signal processing
+ * on the accelerometer raw results, of course. 
+ */
+
 package com.yulaev.screamer;
 
 import android.content.Context;
@@ -50,7 +55,8 @@ public class AccelerometerThread extends Thread implements SensorEventListener{
 
 	final int MESSAGE_DELAY = 100;
 	
-	/** Does nothing! Everything is handled in the handler.
+	/** Responsible for registering this Thread as an accelerometer sensor listener and sending
+	 * periodic updates to the main Thread regarding whether we are in calibration mode or not.
 	 */
 	@Override
 	public void run() {
@@ -85,6 +91,12 @@ public class AccelerometerThread extends Thread implements SensorEventListener{
 	private double [] last_samples_abs;
 	private int last_samplecount;
 		
+	/** When we get a new set of samples from the accelerometer, we can use this to update
+	 * our calibration.
+	 * @param x
+	 * @param y
+	 * @param z
+	 */
 	private void updateLastSamples(float x, float y, float z) {
 		if(last_samplecount < LAST_SAMPLE_DEPTH) {
 			last_samples_abs[last_samplecount] = vectorLen(x,y,z);		
@@ -100,6 +112,11 @@ public class AccelerometerThread extends Thread implements SensorEventListener{
 		}
 	}
 	
+	/** Return the absolute vector length that we got when we calibrated the accelerometer. Used 
+	 * to determine the relative offset of the current (absolute) device acceleration vs what we
+	 * had measured in calibration.
+	 * @return
+	 */
 	private double getOffsetAbs() {
 		if(last_samplecount < LAST_SAMPLE_DEPTH) return(0.0d);
 		else {
@@ -118,10 +135,15 @@ public class AccelerometerThread extends Thread implements SensorEventListener{
 	final int STATE_NOT_FALLING = 2;
 	int state;
 	
+	/** Compute the lenght of a 3D vector */
 	private float vectorLen(float x, float y, float z) {
 		return ( (float) Math.sqrt(Math.pow(x,2.0) + Math.pow(y,2.0) + Math.pow(z,2.0)) );
 	}
 	
+	/** Called when we get updated accelerometer sensor data. Process the result and either use it for calibration,
+	 * or use it to determine wehter we are in normal earth gravity or greater, or if we are in freefall (relatively 
+	 * low acceleration compared to during calibration).
+	 */
 	public void onSensorChanged(SensorEvent event) {
 		float x = event.values[0];
 		float y = event.values[1];

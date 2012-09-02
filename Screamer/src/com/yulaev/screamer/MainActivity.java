@@ -1,3 +1,9 @@
+/** The main activity class for Screamer. It instantiates the AccelerometerThread, the PointCounter,
+ * and deals with updating all of the UI elements as well as playing sounds.
+ * 
+ * Maybe it would make sense to delegate sound playing to another Thread? Not sure.
+ */
+
 package com.yulaev.screamer;
 
 import java.util.HashMap;
@@ -107,6 +113,10 @@ public class MainActivity extends Activity {
     
     private int display_state;
     private long toss_duration;
+    /** Advance the display state machine based on the last input that we've received, typically from
+     * the AccelerometerThread.
+     * @param display_input The last input signal received.
+     */
     private void toggleDisplay(int display_input) {   	
     	if(display_input == DISPLAY_CALIBRATING) {
     		playNoSound();
@@ -204,6 +214,11 @@ public class MainActivity extends Activity {
     	Log.v(activitynametag, "Sound: off");
     }
     
+    /** Calculates the number of points aquired for a throw lasting throw_duration ms.
+     * 
+     * @param throw_duration
+     * @return
+     */
     private int calculateThrowScore(long throw_duration) {
     	Random rand = new Random();
     	

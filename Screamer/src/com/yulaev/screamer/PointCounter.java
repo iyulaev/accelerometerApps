@@ -1,3 +1,6 @@
+/** This class deals with counting points in the Screamer game.
+ * 
+ */
 package com.yulaev.screamer;
 
 import java.io.FileInputStream;
@@ -21,6 +24,12 @@ public class PointCounter implements Serializable {
 	private static transient int number_of_instances = 0;
 	private transient int this_instance;
 	
+	/** Consructor
+	 * 
+	 * @param context The calling Context, for opening files.
+	 * @param do_reset_instance_count Should we reset the instance counter? Do "true" for the first created
+	 * instance of PointCounter in a given app.
+	 */
 	public PointCounter(Context context, boolean do_reset_instance_count) {
 		last_throw_points = 0;
 		this_game_points = 0;
@@ -57,6 +66,9 @@ public class PointCounter implements Serializable {
 		
 	}
 	
+	/** Resets this game's point total and the # of points aquired on the last throw
+	 * 
+	 */
 	public void reset() {
 		last_throw_points = 0;
 		this_game_points = 0;
@@ -67,6 +79,10 @@ public class PointCounter implements Serializable {
 		this_instance = number_of_instances++;
 	}
 	
+	/** Process a new score result from a "throw" in the game.
+	 * 
+	 * @param n_throw_points The number of points the user aquired on the last throw.
+	 */
 	public void processThrowScore (int n_throw_points) {
 		last_throw_points = n_throw_points;
 		this_game_points += n_throw_points;
@@ -83,6 +99,10 @@ public class PointCounter implements Serializable {
 	public int getThrowHiScore() { return throw_hiscore_points; }
 	public int getGameHiScore() { return game_hiscore_points; }
 	
+	/** Saves the scores to a file, so that they can be loaded the next time a game is started. Typically
+	 * gets called from the onDestroy() in the top-most activity of the game.
+	 * @param context The calling Context, used to save the file.
+	 */
 	public void saveScores(Context context) {
 		String fileName = "pointcounter_" + Integer.toString(this_instance);
 		FileOutputStream fos = null;

@@ -1,3 +1,8 @@
+/** This class is used to send messages of various types between the different thread handlers 
+ * of the application.
+ * 
+ */
+
 package com.yulaev.macrogesturemapviewer;
 
 import android.os.Handler;

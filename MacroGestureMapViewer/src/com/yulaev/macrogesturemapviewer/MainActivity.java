@@ -1,3 +1,8 @@
+/** The main activity for the macrogesture map viewer class. Creates the MyView (a sub-class
+ * of MapView) and also launches the Accelerometer thread. Responsible for converting 
+ * accelerometer inputs to map position changes. 
+ */
+
 package com.yulaev.macrogesturemapviewer;
 
 import java.util.List;
