@@ -7,7 +7,6 @@
 package com.yulaev.screamer;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 
 import com.yulaev.screamer.R;
@@ -22,7 +21,6 @@ import android.os.SystemClock;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;

@@ -5,7 +5,6 @@
 
 package com.yulaev.screamer;
 
-import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -31,9 +30,6 @@ public class AccelerometerThread extends Thread implements SensorEventListener{
         
         running = true;
         	
-		last_samples_x = new double[LAST_SAMPLE_DEPTH];
-		last_samples_y = new double[LAST_SAMPLE_DEPTH];
-		last_samples_z = new double[LAST_SAMPLE_DEPTH];
 		last_samples_abs = new double[LAST_SAMPLE_DEPTH];
 		last_samplecount = 0;
 		
@@ -85,9 +81,6 @@ public class AccelerometerThread extends Thread implements SensorEventListener{
 	}
 	
 	private final int LAST_SAMPLE_DEPTH = 8;
-	private double [] last_samples_x;
-	private double [] last_samples_y;
-	private double [] last_samples_z;
 	private double [] last_samples_abs;
 	private int last_samplecount;
 		
